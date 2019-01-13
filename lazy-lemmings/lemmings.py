@@ -37,14 +37,6 @@ Find the farthest any single lemming needs to travel for food.
 def furthest(num_holes, black_holes):
     """Find longest distance between a hole and a cafe."""
 
-    """ Loop through all holes
-        Count # of steps needed to get to black hole from current hole
-        When you get to the black hole, save distance
-        Move to next i
-
-        Return largest distance
-    """
-
     distances = set()
     distance = 0
 
