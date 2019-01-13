@@ -21,6 +21,9 @@ It cannot use deadly branch (1 in the list).
 
     >>> lemur([0, 0, 0, 0, 1, 0, 0, 1, 0])
     5
+
+    >>> lemur([0,0,1,0,0,0,0,1,0,0])
+    6
 """
 
 
@@ -37,7 +40,9 @@ def  lemur(branches):
 
     path = set()
     for i in range(len(branches)):
-        if (i+1) in range(len(branches)) and (i+2) in range(len(branches)):
+        if branches[i] == 1:
+            pass
+        elif (i+1) in range(len(branches)) and (i+2) in range(len(branches)):
             if branches[i+2] == 0 and not (i+2) in path:
                 # jump to this branch
                 path.add(i+2)
@@ -45,9 +50,9 @@ def  lemur(branches):
                 # jump to previous branch
                 path.add(i+1)
 
-        elif (i+1) in range(len(branches)) and not (i+1) in path:
-            # only one branch left, so jump to next branch
-            path.add(i+1)
+        elif (i+1) in range(len(branches)):
+            if branches[i+1] == 0 and not (i+1) in path:
+                path.add(i+1)
 
     return len(path)
 
