@@ -17,20 +17,20 @@ Find the farthest any single lemming needs to travel for food.
     >>> furthest(7, [0, 6])
     3
 
-    >>> furthest_optimized(7, [0, 6])
-    3
+    # >>> furthest_optimized(7, [0, 6])
+    # 3
 
-    >>> furthest_optimized(3, [0, 1, 2])
-    0
+    # >>> furthest_optimized(3, [0, 1, 2])
+    # 0
 
-    >>> furthest_optimized(3, [2])
-    2
+    # >>> furthest_optimized(3, [2])
+    # 2
 
-    >>> furthest_optimized(3, [0])
-    2
+    # >>> furthest_optimized(3, [0])
+    # 2
 
-    >>> furthest_optimized(6, [2, 4])
-    2
+    # >>> furthest_optimized(6, [2, 4])
+    # 2
 """
 
 
@@ -48,18 +48,25 @@ def furthest(num_holes, black_holes):
     distances = set()
     distance = 0
 
-    for i in range(len(num_holes)):
+    for i in range(num_holes):
 
-        for j in range(i, len(num_holes)):
-            if j in black_holes:
-                distances.add(distance)
-                distance = 0
-                break
-            else:
-                distance += 1
+        distances_from_i_to_black_holes = set()
+
+        for black_hole in black_holes:
+            distances_from_i_to_black_holes.add(abs(black_hole - i))
+            
+
+        distances.add(min(distances_from_i_to_black_holes))
 
     return max(distances)
 
+
+
+
+
+
+def furthest_optimized(num_holes, black_holes):
+    pass
 
 if __name__ == '__main__':
     import doctest
