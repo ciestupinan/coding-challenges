@@ -46,7 +46,7 @@ def  lemur(branches):
         if branches[i] == 1:
             pass
         elif (i+1) in range(len(branches)) and (i+2) in range(len(branches)):
-            if branches[i+2] == 0 and not (i+2) in path:
+            if branches[i+2] == 0 and not (i+2) in path and not (i+1) in path:
                 # jump to this branch
                 path.add(i+2)
             elif branches[i+2] == 1 and not (i+1) in path:
